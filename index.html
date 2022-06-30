@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!-- ================= CSS ======================== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- =================== FAVICONS ====================== -->
+    <link rel="shortcut icon" href="assets/img/logo-alabim.png" type="image/x-icon">
+
+    <title>Todo List | Alabim Developer</title>
+</head>
+<body>
+    <div id="app">
+        <div class="card">
+            <div class="card__container">
+                <h2 class="card__title">Todo List Using <br> Vue.Js</h2>
+
+                <h3 class="form__card-title">Masukkan Todo Baru</h3>
+                
+                <form v-on:submit.prevent="createTodo">
+                    <div class="form__card">
+                        <input v-model="newTodo" type="text" class="input__card" placeholder="Ketik disini">
+                        <button class="btn__card" type="submit">Tambah</button>
+                    </div>
+
+                    <div v-for="todo,index in todoList" class="form__data">
+                        <p class="form__text">{{ todo }}</p>
+                        <div @click="deleteTodo(index)" class="form__delete">
+                            <i class='bx bxs-trash icon__delete'></i>
+                        </div>
+                    </div>
+                </form>
+
+                <p v-if="todoList.length !== 0" class="plan">Jumlah Tugas: {{ todoCount }}</p>
+                <p v-else class="plan">Belum ada Tugas</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==================== CDN VUE JS ===================== -->
+    <script src="assets/js/vue.js"></script>
+
+    <!-- ======================= MAIN JS ====================== -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
